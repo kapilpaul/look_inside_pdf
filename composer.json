@@ -1,0 +1,22 @@
+{
+    "name": "kapilpaul/look-inside-pdf",
+    "description": "Look Inside a pdf book to read or book sample to read",
+    "type": "wordpress-plugin",
+    "license": "GPLv2",
+    "authors": [
+        {
+            "name": "Kapil Paul",
+            "email": "kapilpaul007@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "DCoders\\LookInsidePdf\\": "includes/"
+        },
+        "files": [
+            "includes/functions.php"
+        ]
+    }
+}
