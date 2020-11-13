@@ -218,6 +218,8 @@ final class LookInsidePdf {
 
         // Localize our plugin
         add_action( 'init', [ $this, 'localization_setup' ] );
+
+        add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), [ $this, 'plugin_action_links' ] );
     }
 
     /**
@@ -276,6 +278,21 @@ final class LookInsidePdf {
             case 'frontend' :
                 return ( ! is_admin() || defined( 'DOING_AJAX' ) ) && ! defined( 'DOING_CRON' );
         }
+    }
+
+    /**
+     * Plugin action links
+     *
+     * @param array $links
+     *
+     * @since 1.0.0
+     *
+     * @return array
+     */
+    public function plugin_action_links( $links ) {
+        $links[] = '<a href="' . admin_url( 'edit.php?post_type=product&page=lipdf-settings' ) . '">' . __( 'Settings', 'look-inside-pdf' ) . '</a>';
+
+        return $links;
     }
 
 } // LookInsidePdf

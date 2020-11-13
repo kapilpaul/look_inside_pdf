@@ -1,4 +1,6 @@
-.lipdf_container {
+.lipdf_container {}
+
+.show_lipdf_button_container {
     display: block;
     width: 100%;
     overflow: hidden;
@@ -10,8 +12,33 @@
     margin-right: 10px;
 }
 
+.donot_show_lipdf_btn{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    color: #fff;
+}
+
+.donot_show_lipdf_btn:hover{
+    background: #3333339e;
+    font-size: 25px;
+    line-height: 30px;
+    display: flex;
+    align-items: center;
+    color: #fff;
+    padding: 10px;
+    justify-content: center;
+}
+
 .text-center {
     text-align: center;
+}
+
+.pdfobject-container {
+    height: 80vh;
+    border: 1rem solid rgba(0,0,0,.1);
 }
 
 /* The Modal (background) */
@@ -31,10 +58,10 @@
 /* Modal Content/Box */
 .modal-content {
     background-color: #fefefe;
-    margin: 15% auto;
+    margin: 5% auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 67%;
+    width: 80%;
     position: relative;
 }
 

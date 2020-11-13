@@ -1,83 +1,21 @@
-<div class="lipdf_container text-center">
-    <a href="javascript:void(0)" class="button alt lipdf_btn" id="lipdf_read_btn">Read PDF</a>
+<div class="lipdf_container <?php echo $button_container_class; ?> text-center">
+    <a href="javascript:void(0)" class="<?php echo $button_class; ?> lipdf_btn" id="lipdf_read_btn">
+        <?php _e( $read_button_text, 'look-inside-pdf' ); ?>
+    </a>
 </div>
 
 <!-- The Modal -->
 <div id="lipdf_modal" class="modal">
     <!-- Modal content -->
     <div class="modal-content">
-        <span class="close">&times;</span>
+        <span class="close" id="limodalclose">&times;</span>
 
         <div id="canvas_container">
-            <canvas id="cnv"></canvas>
-        </div>
-
-        <div>
-            <button id="prev">Prev</button>
-            <button id="next">Next</button>
+            <div id="lipdf_reader"></div>
         </div>
     </div>
 </div>
 
 <script>
-    const PDFStart = (nameRoute) => {
-        let loadingTask = pdfjsLib.getDocument(nameRoute),
-            pdfDoc = null,
-            canvas = document.querySelector("#cnv"),
-            ctx = canvas.getContext("2d"),
-            scale = 1.5,
-            numPage = 1;
-
-        const GeneratePDF = (numPage) => {
-            pdfDoc.getPage(numPage).then((page) => {
-                var container = document.getElementById('canvas_container');
-
-                var viewport = page.getViewport({ scale: 1 });
-                let clientWidth = container.clientWidth ? container.clientWidth : 923;
-                scale = clientWidth / viewport.width;
-
-                viewport = page.getViewport({ scale: scale });
-
-                canvas.height = viewport.height;
-                canvas.width = viewport.width;
-
-                let renderContext = {
-                    canvasContext: ctx,
-                    viewport: viewport,
-                };
-
-                page.render(renderContext);
-            });
-        };
-
-        const PrevPage = () => {
-            if (numPage === 1) {
-                return;
-            }
-            numPage--;
-            GeneratePDF(numPage);
-        };
-
-        const NextPage = () => {
-            if (numPage >= pdfDoc.numPages) {
-                return;
-            }
-            numPage++;
-            GeneratePDF(numPage);
-        };
-
-        document.querySelector("#prev").addEventListener("click", PrevPage);
-        document.querySelector("#next").addEventListener("click", NextPage);
-
-        loadingTask.promise.then((pdfDoc_) => {
-            pdfDoc = pdfDoc_;
-            GeneratePDF(numPage);
-        });
-    };
-
-    const startPdf = () => {
-        PDFStart("<?php echo $pdf_url; ?>");
-    };
-
-    window.addEventListener("load", startPdf);
+    PDFObject.embed("<?php echo $pdf_url; ?>", "#lipdf_reader");
 </script>
