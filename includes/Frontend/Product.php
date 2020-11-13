@@ -34,7 +34,7 @@ class Product {
 
         $product = wc_get_product( $post->ID );
 
-        if ( ! $product && ! $product->get_downloadable() ) {
+        if ( ! $product ) {
             return false;
         }
 

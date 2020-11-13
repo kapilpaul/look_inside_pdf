@@ -1,9 +1,9 @@
 <div class="lipdf_container text-center">
-    <button class="single_add_to_cart_button button alt lipdf_btn" id="myBtn">Read PDF</button>
+    <a href="javascript:void(0)" class="button alt lipdf_btn" id="lipdf_read_btn">Read PDF</a>
 </div>
 
 <!-- The Modal -->
-<div id="myModal" class="modal">
+<div id="lipdf_modal" class="modal">
     <!-- Modal content -->
     <div class="modal-content">
         <span class="close">&times;</span>

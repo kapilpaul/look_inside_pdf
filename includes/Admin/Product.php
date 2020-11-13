@@ -19,7 +19,7 @@ class Product {
      * @return void
      */
     public function __construct() {
-        add_action( 'woocommerce_product_options_downloads', [ $this, 'render_look_inside_pdf_product_option' ] );
+        add_action( 'woocommerce_product_options_general_product_data', [ $this, 'render_look_inside_pdf_product_option' ] );
         add_action( 'woocommerce_process_product_meta', [ $this, 'store_look_inside_pdf_product_option' ] );
     }
 
