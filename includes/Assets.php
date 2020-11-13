@@ -14,7 +14,7 @@ class Assets {
      * @return void
      */
     public function __construct() {
-        add_action( 'init', [ $this, 'register_all_scripts' ], 10 );
+        $this->register_all_scripts();
 
         if ( is_admin() ) {
             add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_admin_scripts' ] );
@@ -42,7 +42,9 @@ class Assets {
      * @return void
      */
     public function enqueue_front_scripts() {
-
+        wp_enqueue_script( 'pdfjs' );
+        wp_enqueue_style( 'front_lookinsidepdf' );
+        wp_enqueue_script( 'front_lookinsidepdf' );
     }
 
     /**
@@ -102,17 +104,17 @@ class Assets {
      */
     public function get_scripts() {
         $scripts = [
-            'admin_lookinsidepdf' => [
-                'src'       => LOOK_INSIDE_PDF_ASSETS . '/admin/js/script.js',
-                'version'   => filemtime( LOOK_INSIDE_PDF_PATH . '/assets/admin/js/script.js' ),
-                'deps'      => [],
-                'in_footer' => true,
-            ],
             'front_lookinsidepdf' => [
                 'src'       => LOOK_INSIDE_PDF_ASSETS . '/front/js/script.js',
                 'version'   => filemtime( LOOK_INSIDE_PDF_PATH . '/assets/front/js/script.js' ),
                 'deps'      => [],
                 'in_footer' => true,
+            ],
+            'pdfjs'               => [
+                'src'       => 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.4.456/pdf.min.js',
+                'version'   => '2.4.456',
+                'deps'      => [],
+                'in_footer' => false,
             ],
         ];
 
@@ -128,11 +130,6 @@ class Assets {
      */
     public function get_styles() {
         $styles = [
-            'admin_lookinsidepdf' => [
-                'src'     => LOOK_INSIDE_PDF_ASSETS . '/admin/css/style.css',
-                'deps'    => [],
-                'version' => filemtime( LOOK_INSIDE_PDF_PATH . '/assets/admin/css/style.css' ),
-            ],
             'front_lookinsidepdf' => [
                 'src'     => LOOK_INSIDE_PDF_ASSETS . '/front/css/style.css',
                 'deps'    => [],

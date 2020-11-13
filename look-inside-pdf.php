@@ -232,7 +232,6 @@ final class LookInsidePdf {
             // $this->container['ajax'] =  new DCoders\LookInsidePdf\Ajax();
         }
 
-        $this->container['api']    = new DCoders\LookInsidePdf\Api();
         $this->container['assets'] = new DCoders\LookInsidePdf\Assets();
 
         $this->container = apply_filters( 'lipdf_get_class_container', $this->container );

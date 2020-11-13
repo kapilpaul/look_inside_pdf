@@ -30,7 +30,7 @@ class Admin {
      *
      * @return void
      */
-    public function set_classes() {
+    private function set_classes() {
         $container            = lookinsidepdf()->container;
         $container['product'] = new Product();
     }
