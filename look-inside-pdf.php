@@ -4,7 +4,7 @@ Plugin Name: Look Inside PDF
 Plugin URI: https://kapilpaul.me
 Description: Look Inside a pdf book to read or book sample to read
 Version: 1.0.0
-Author: kapilpaul
+Author: Kapil Paul
 Author URI: https://kapilpaul.me
 License: GPLv2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html

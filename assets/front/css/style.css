@@ -1,3 +1,7 @@
+.woocommerce-product-gallery__wrapper{
+    position: relative;
+}
+
 .lipdf_container {}
 
 .show_lipdf_button_container {
