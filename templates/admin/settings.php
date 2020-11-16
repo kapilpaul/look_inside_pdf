@@ -3,27 +3,47 @@
 
     <?php do_action( 'lipdf_settings_before_form' ); ?>
 
+    <?php settings_errors(); ?>
+
     <form method="post" action="options.php">
         <?php settings_fields( 'lipdf-settings' ); ?>
         <?php do_settings_sections( 'lipdf-settings' ); ?>
 
         <table class="form-table">
-            <tr valign="top">
-                <th scope="row">Read Button Text</th>
+            <?php
+            foreach ( $input_fields as $key => $input ) {
+                switch ( $input['type'] ) {
+                    case 'text' :
+            ?>
+
+            <tr valign="top" class="<?php echo $key; ?>">
+                <th scope="row"><?php echo $input['label']; ?></th>
                 <td>
-                    <input class="widefat" type="text" name="_lipdf_read_button_text" value="<?php echo get_option( '_lipdf_read_button_text' ); ?>"/>
+                    <input id="<?php echo $input['id']; ?>" class="<?php echo $input['class']; ?>" type="text" name="<?php echo $key; ?>" value="<?php echo $input['value']; ?>" placeholder="<?php echo $input['placeholder']; ?>"/>
                 </td>
             </tr>
 
-            <tr valign="top">
-                <th scope="row">Show Read Button</th>
+            <?php
+                        break;
+                    case 'select' :
+            ?>
+            <tr valign="top" class="<?php echo $key; ?>">
+                <th scope="row"><?php echo $input['label']; ?></th>
                 <td>
-                    <select name="_lipdf_show_read_button" class="widefat">
-                        <option value="yes" <?php echo 'yes' === get_option( '_lipdf_show_read_button' ) ? 'selected' : ''; ?> >Yes</option>
-                        <option value="no" <?php echo 'no' === get_option( '_lipdf_show_read_button' ) ? 'selected' : ''; ?>>No</option>
+                    <select id="<?php echo $input['id']; ?>" name="<?php echo $key; ?>" class="<?php echo $input['class']; ?>">
+                        <?php
+                        foreach ( $input['options'] as $option_key => $option ) {
+                            $selected = $option_key === get_option( $key ) ? 'selected' : '';
+                            echo "<option value=\"{$option_key}\" {$selected}>{$option}</option>";
+                        }
+                        ?>
                     </select>
                 </td>
             </tr>
+            <?php
+                        break;
+            ?>
+            <?php } } ?>
 
             <?php do_action( 'lipdf_settings_after_fields' ); ?>
         </table>

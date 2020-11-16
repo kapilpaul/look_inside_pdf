@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Look Inside PDF
-Plugin URI: https://kapilpaul.me
+Plugin URI: https://kapilpaul.me/projects/look-inside-pdf
 Description: Look Inside a pdf book to read or book sample to read
 Version: 1.0.0
 Author: Kapil Paul

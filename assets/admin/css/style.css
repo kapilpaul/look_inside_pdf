@@ -1,0 +1,75 @@
+.lipdf-upload-images {
+}
+
+.lipdf-upload-images img {
+    max-width: 100%;
+}
+
+.lipdf_gallery {
+}
+
+.lipdf_gallery ul.product_images {
+}
+
+.lipdf_gallery ul.product_images li.image {
+    display: inline-block;
+    margin: 0 5px;
+    width: 80px;
+    position: relative;
+}
+
+.lipdf_gallery ul.product_images li.image img {
+    max-width: 100%;
+}
+
+.lipdf_gallery ul.product_images ul.actions li a.delete::before {
+    font-family: Dashicons;
+    speak: none;
+    font-weight: 400;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    margin: 0;
+    text-indent: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    content: "";
+    color: #999;
+    background: #fff;
+    border-radius: 50%;
+    height: 1em;
+    width: 1em;
+    line-height: 1em;
+}
+
+.lipdf_gallery ul.product_images ul.actions li a.delete {
+    display: block;
+    text-indent: -9999px;
+    position: relative;
+    height: 1em;
+    width: 1em;
+    font-size: 1.4em;
+}
+
+.lipdf_gallery ul ul.actions {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    padding: 2px;
+    display: block;
+}
+
+ul.actions::before, ul.actions::after {
+    content: ' ';
+    display: table;
+}
+
+.lipdf_gallery ul ul.actions li {
+    float: right;
+    margin: 0 0 0 2px;
+}

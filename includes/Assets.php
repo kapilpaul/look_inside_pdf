@@ -31,7 +31,12 @@ class Assets {
      * @return void
      */
     public function enqueue_admin_scripts() {
+        if ( ! did_action( 'wp_enqueue_media' ) ) {
+            wp_enqueue_media();
+        }
 
+        wp_enqueue_style( 'admin_lookinsidepdf' );
+        wp_enqueue_script( 'admin_lookinsidepdf' );
     }
 
     /**
@@ -42,7 +47,7 @@ class Assets {
      * @return void
      */
     public function enqueue_front_scripts() {
-        wp_enqueue_script( 'pdfobject' );
+//        wp_enqueue_script( 'pdfobject' );
         wp_enqueue_style( 'front_lookinsidepdf' );
         wp_enqueue_script( 'front_lookinsidepdf' );
     }
@@ -110,11 +115,11 @@ class Assets {
                 'deps'      => [],
                 'in_footer' => true,
             ],
-            'pdfjs'               => [
-                'src'       => 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.4.456/pdf.min.js',
-                'version'   => '2.4.456',
+            'admin_lookinsidepdf' => [
+                'src'       => LOOK_INSIDE_PDF_ASSETS . '/admin/js/script.js',
+                'version'   => filemtime( LOOK_INSIDE_PDF_PATH . '/assets/admin/js/script.js' ),
                 'deps'      => [],
-                'in_footer' => false,
+                'in_footer' => true,
             ],
             'pdfobject'           => [
                 'src'       => 'https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.4/pdfobject.min.js',
@@ -140,6 +145,11 @@ class Assets {
                 'src'     => LOOK_INSIDE_PDF_ASSETS . '/front/css/style.css',
                 'deps'    => [],
                 'version' => filemtime( LOOK_INSIDE_PDF_PATH . '/assets/front/css/style.css' ),
+            ],
+            'admin_lookinsidepdf' => [
+                'src'     => LOOK_INSIDE_PDF_ASSETS . '/admin/css/style.css',
+                'deps'    => [],
+                'version' => filemtime( LOOK_INSIDE_PDF_PATH . '/assets/admin/css/style.css' ),
             ],
         ];
 

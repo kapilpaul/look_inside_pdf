@@ -1,8 +1,18 @@
-.woocommerce-product-gallery__wrapper{
+.woocommerce-product-gallery__wrapper {
     position: relative;
 }
 
-.lipdf_container {}
+.lipdf_container {
+}
+
+.lipdf_container a:focus {
+    outline-color: transparent;
+}
+
+.lipdf_container a.button.alt.lipdf_btn {
+    max-width: 100%;
+    min-width: 100%;
+}
 
 .show_lipdf_button_container {
     display: block;
@@ -16,7 +26,7 @@
     margin-right: 10px;
 }
 
-.donot_show_lipdf_btn{
+.show_image_on_product_thumb, .show_text_on_product_thumb {
     position: absolute;
     top: 0;
     left: 0;
@@ -25,7 +35,19 @@
     color: #fff;
 }
 
-.donot_show_lipdf_btn:hover{
+.show_text_on_product_thumb {
+    z-index: 999;
+    color: #333;
+}
+
+.show_text_on_product_thumb p {
+    background: #fff;
+    padding: 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.donot_show_lipdf_btn:hover {
     background: #3333339e;
     font-size: 25px;
     line-height: 30px;
@@ -38,11 +60,6 @@
 
 .text-center {
     text-align: center;
-}
-
-.pdfobject-container {
-    height: 80vh;
-    border: 1rem solid rgba(0,0,0,.1);
 }
 
 /* The Modal (background) */
@@ -63,14 +80,14 @@
 .modal-content {
     background-color: #fefefe;
     margin: 5% auto;
-    padding: 20px;
+    padding: 30px;
     border: 1px solid #888;
-    width: 80%;
+    width: 70%;
     position: relative;
 }
 
 /* The Close Button */
-.close {
+#lipdf_modal .close {
     color: #ff0000;
     font-size: 28px;
     font-weight: bold;
@@ -86,8 +103,8 @@
     text-align: center;
 }
 
-.close:hover,
-.close:focus {
+#lipdf_modal .close:hover,
+#lipdf_modal .close:focus {
     text-decoration: none;
     cursor: pointer;
 }
@@ -97,3 +114,56 @@ canvas {
     margin: 0 auto;
     text-align: center;
 }
+
+#lipdf_reader {
+    height: 80vh;
+    border: 5px solid rgba(0, 0, 0, .1);
+    overflow-y: scroll;
+    background: rgba(0, 0, 0, .1);
+}
+
+#lipdf_reader ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+#lipdf_reader ul li {
+    margin-bottom: 5px;
+}
+
+.li_pdf_single_image {
+    width: 100%;
+}
+
+
+/* responsive css */
+
+/* Desktop Layout: 1024px. */
+@media only screen and (min-width: 992px) and (max-width: 1279px) {
+
+}
+
+/* Tablet Layout: 768px. */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    .modal-content {
+        padding: 20px;
+        width: 85%;
+    }
+}
+
+/* Mobile Layout: 320px. */
+@media only screen and (max-width: 767px) {
+    .modal-content {
+        padding: 15px;
+        width: 92%;
+    }
+
+}
+
+/* Wide Mobile Layout: 480px. */
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+
+}
+
+

@@ -20,6 +20,10 @@ class Product {
      */
     public function __construct() {
         add_action( 'woocommerce_product_thumbnails', [ $this, 'render_view_pdf_button' ] );
+
+        if ( 'yes' === get_option( '_lipdf_show_read_more_button_after_add_to_cart_button', 'yes' ) ) {
+//            add_action( 'woocommerce_after_add_to_cart_quantity', [ $this, 'render_view_pdf_button' ] );
+        }
     }
 
     /**
@@ -38,22 +42,25 @@ class Product {
             return false;
         }
 
-        $_li_pdf_file = get_post_meta( $product->get_id(), '_li_pdf_file', true );
+        $_li_pdf_images = get_post_meta( $product->get_id(), '_li_pdf_images', true );
 
-        if ( ! $_li_pdf_file ) {
+        if ( ! $_li_pdf_images ) {
             return false;
         }
 
-        $read_button_text       = get_option( '_lipdf_read_button_text' );
-        $show_button            = get_option( '_lipdf_show_read_button' );
-        $button_class           = 'no' === $show_button ? 'donot_show_lipdf_btn' : 'button alt';
-        $button_container_class = 'yes' === $show_button ? 'show_lipdf_button_container' : '';
+        $_li_pdf_images = explode( ',', $_li_pdf_images );
+
+        $show_on_product_thumb                           = get_option( '_lipdf_type_of_data_show_on_product_thumb', 'image' );
+        $lipdf_read_more_image_link                      = 'image' === $show_on_product_thumb ? get_option( '_lipdf_read_more_image_link' ) : '';
+        $lipdf_read_more_button_text                     = get_option( '_lipdf_read_more_button_text', 'Read More' );
+        $lipdf_show_read_more_button_after_product_thumb = get_option( '_lipdf_show_read_more_button_after_product_thumb', 'yes' );
 
         lipdf_get_template( 'product/single.php', [
-            'pdf_url'                => $_li_pdf_file,
-            'read_button_text'       => $read_button_text,
-            'button_class'           => $button_class,
-            'button_container_class' => $button_container_class,
+            'li_pdf_images'                                   => $_li_pdf_images,
+            'show_on_product_thumb'                           => $show_on_product_thumb,
+            'lipdf_read_more_image_link'                      => $lipdf_read_more_image_link,
+            'lipdf_read_more_button_text'                     => $lipdf_read_more_button_text,
+            'lipdf_show_read_more_button_after_product_thumb' => $lipdf_show_read_more_button_after_product_thumb,
         ] );
     }
 }
