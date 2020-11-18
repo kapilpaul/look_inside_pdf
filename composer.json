@@ -10,7 +10,9 @@
         }
     ],
     "minimum-stability": "dev",
-    "require": {},
+    "require": {
+        "appsero/client": "9999999-dev"
+    },
     "autoload": {
         "psr-4": {
             "DCoders\\LookInsidePdf\\": "includes/"

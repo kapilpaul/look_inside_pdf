@@ -4,12 +4,62 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8c324f46fa2ba4f510c3a076abab63ae",
-    "packages": [],
+    "content-hash": "2b9d7a6d362eb00e9d08ca1b5b84f972",
+    "packages": [
+        {
+            "name": "appsero/client",
+            "version": "dev-develop",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Appsero/client.git",
+                "reference": "07608b10580c877fa0c05e20218cf4cbc8cb8187"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Appsero/client/zipball/07608b10580c877fa0c05e20218cf4cbc8cb8187",
+                "reference": "07608b10580c877fa0c05e20218cf4cbc8cb8187",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Appsero\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Tareq Hasan",
+                    "email": "tareq@appsero.com"
+                }
+            ],
+            "description": "Appsero Client",
+            "keywords": [
+                "analytics",
+                "plugin",
+                "theme",
+                "wordpress"
+            ],
+            "support": {
+                "issues": "https://github.com/Appsero/client/issues",
+                "source": "https://github.com/Appsero/client/tree/develop"
+            },
+            "time": "2020-11-06T08:16:38+00:00"
+        }
+    ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "appsero/client": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],

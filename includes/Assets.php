@@ -47,7 +47,6 @@ class Assets {
      * @return void
      */
     public function enqueue_front_scripts() {
-//        wp_enqueue_script( 'pdfobject' );
         wp_enqueue_style( 'front_lookinsidepdf' );
         wp_enqueue_script( 'front_lookinsidepdf' );
     }
@@ -120,12 +119,6 @@ class Assets {
                 'version'   => filemtime( LOOK_INSIDE_PDF_PATH . '/assets/admin/js/script.js' ),
                 'deps'      => [],
                 'in_footer' => true,
-            ],
-            'pdfobject'           => [
-                'src'       => 'https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.4/pdfobject.min.js',
-                'version'   => '2.2.4',
-                'deps'      => [],
-                'in_footer' => false,
             ],
         ];
 

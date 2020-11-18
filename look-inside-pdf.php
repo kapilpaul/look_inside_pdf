@@ -79,6 +79,8 @@ final class LookInsidePdf {
         register_activation_hook( __FILE__, [ $this, 'activate' ] );
         register_deactivation_hook( __FILE__, [ $this, 'deactivate' ] );
 
+        $this->init_appsero_tracker();
+
         add_action( 'woocommerce_loaded', [ $this, 'init_plugin' ] );
     }
 
@@ -293,6 +295,24 @@ final class LookInsidePdf {
         $links[] = '<a href="' . admin_url( 'edit.php?post_type=product&page=lipdf-settings' ) . '">' . __( 'Settings', 'look-inside-pdf' ) . '</a>';
 
         return $links;
+    }
+
+    /**
+     * Init appsero tracker
+     *
+     * @since 1.0.0
+     *
+     * @return void
+     */
+    public function init_appsero_tracker() {
+        if ( ! class_exists( 'Appsero\Client' ) ) {
+            require_once __DIR__ . '/appsero/src/Client.php';
+        }
+
+        $client = new Appsero\Client( '30f28eed-c18a-411e-892b-1f3d2b978ab4', 'Look Inside PDF', __FILE__ );
+
+        // Active insights
+        $client->insights()->init();
     }
 
 } // LookInsidePdf

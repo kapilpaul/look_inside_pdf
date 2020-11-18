@@ -19,10 +19,7 @@ class Product {
      * @return void
      */
     public function __construct() {
-        add_action( 'woocommerce_product_options_general_product_data', [
-            $this,
-            'render_look_inside_pdf_gallery_product_option',
-        ] );
+        add_action( 'woocommerce_product_options_general_product_data', [ $this, 'render_look_inside_pdf_gallery_product_option' ] );
         add_action( 'woocommerce_process_product_meta', [ $this, 'store_look_inside_pdf_product_option' ] );
     }
 
@@ -59,20 +56,20 @@ class Product {
      * @return bool
      */
     public function store_look_inside_pdf_product_option( $post_id ) {
-        $post_data = wp_unslash( $_POST );
+        $woocommerce_meta_nonce = sanitize_key( $_POST['woocommerce_meta_nonce'] );
 
         if (
-            ! isset( $post_data['woocommerce_meta_nonce'] ) ||
-            ! wp_verify_nonce( $post_data['woocommerce_meta_nonce'], 'woocommerce_save_data' )
+            ! isset( $woocommerce_meta_nonce ) ||
+            ! wp_verify_nonce( $woocommerce_meta_nonce, 'woocommerce_save_data' )
         ) {
             return false;
         }
 
-        if ( ! isset( $post_data['_li_pdf_images'] ) ) {
+        if ( ! isset( $_POST['_li_pdf_images'] ) ) {
             return false;
         }
 
-        $_li_pdf_images = sanitize_text_field( $post_data['_li_pdf_images'] );
+        $_li_pdf_images = sanitize_text_field( $_POST['_li_pdf_images'] );
 
         update_post_meta( $post_id, '_li_pdf_images', $_li_pdf_images );
     }

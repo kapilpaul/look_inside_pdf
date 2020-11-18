@@ -91,7 +91,7 @@ class Admin {
                 'options' => [
                     'image' => __( 'Image', 'look-inside-pdf' ),
                     'text'  => __( 'Text', 'look-inside-pdf' ),
-                    'no'    => __( 'No', 'look-inside-pdf' ),
+                    'no'    => __( 'None', 'look-inside-pdf' ),
                 ],
                 'value'   => get_option( '_lipdf_type_of_data_show_on_product_thumb', 'image' ),
                 'class'   => 'widefat',

@@ -26,7 +26,7 @@ if ( 'text' === $show_on_product_thumb ) {
 if ( 'yes' === $lipdf_show_read_more_button_after_product_thumb ) {
 ?>
     <div class="lipdf_container text-center">
-        <a href="javascript:void(0)" class="button alt lipdf_btn lipdf_read_btn">
+        <a href="javascript:void(0)" class="button alt lipdf_btn after_product_thumb lipdf_read_btn">
             <?php echo $lipdf_read_more_button_text; ?>
         </a>
     </div>
